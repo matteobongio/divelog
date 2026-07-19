@@ -1,0 +1,27 @@
+name: Compile Typst and Release on Commit
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Compile Typst Document
+        uses: typst-community/setup-typst@v5
+      - run: typst compile divelog.typ divelog.pdf
+
+      - name: Update Latest Release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: latest
+          name: Download pdf
+          files: divelog.pdf
+          fail_on_unmatched_files: true
