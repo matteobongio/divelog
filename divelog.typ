@@ -146,18 +146,17 @@
 #v(2pt)
 #rect(
   width: 100%,
-  height: 6.5cm,
+  height: 7cm,
   stroke: 0.5pt + border-color,
   fill: light-gray,
   radius: 4pt,
   inset: 10pt,
   [
-    // Subtle grid background lines for sketching
-    #place(top + left)[
-      #line(start: (0pt, 1.5cm), end: (100%, 1.5cm), stroke: (paint: border-color.lighten(50%), dash: "dotted"))
-      #line(start: (0pt, 3.0cm), end: (100%, 3.0cm), stroke: (paint: border-color.lighten(50%), dash: "dotted"))
-      #line(start: (0pt, 4.5cm), end: (100%, 4.5cm), stroke: (paint: border-color.lighten(50%), dash: "dotted"))
-    ]
+    #let i = 0
+    #while i < 4 {
+      line(start: (0pt, 1cm), end: (100%, 1cm), stroke: (paint: border-color.lighten(50%), dash: "dotted"))
+      i = i + 1
+    }
   ]
 )
 
