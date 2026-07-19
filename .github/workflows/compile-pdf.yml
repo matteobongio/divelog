@@ -18,8 +18,10 @@ jobs:
         uses: typst-community/setup-typst@v5
       - run: typst compile divelog.typ divelog.pdf
 
-      - name: Upload PDF Artifact
-        uses: actions/upload-artifact@v4
+      - name: Update Latest Release
+        uses: softprops/action-gh-release@v3
         with:
-          name: compiled-document
-          path: divelog.pdf
+          tag_name: latest
+          name: Latest Build
+          files: divelog.pdf
+          fail_on_unmatched_files: true
