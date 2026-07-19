@@ -16,7 +16,7 @@ jobs:
 
       - name: Compile Typst Document
         uses: typst-community/setup-typst@v5
-        run: typst compile divelog.typ divelog.pdf
+      - run: typst compile divelog.typ divelog.pdf
 
       - name: Upload PDF Artifact
         uses: actions/upload-artifact@v4
