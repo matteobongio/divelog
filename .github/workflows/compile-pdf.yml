@@ -11,10 +11,15 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: typst-community/setup-typst@v5
-      - run: typst compile divelog.typ divelog.pdf
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - uses: actions/upload-artifact@v4
-      - with:
+      - name: Compile Typst Document
+        uses: typst-community/setup-typst@v5
+        run: typst compile divelog.typ divelog.pdf
+
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v4
+        with:
           name: compiled-document
           path: divelog.pdf
