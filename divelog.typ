@@ -176,12 +176,12 @@
 
 // Verification & Verification Stamp Zone
 #grid(
-  columns: (1.5fr, 1fr),
-  column-gutter: 15pt,
+  columns: (1.8fr, 1fr),
+  column-gutter: 1pt,
   
   align(left)[
     #v(0.4cm)
-    #field("Buddy / Instructor Name")
+    #field("Buddy Name")
     #v(0.4cm)
     #field("Signature / Certification No.")
   ],
