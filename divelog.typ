@@ -10,22 +10,20 @@
   ),
 )
 
-#set text(font: "Liberation Sans", size: 9pt, fill: rgb("#1a1a1a"))
-#set align(top)
-
 // Styling 
 #let brand-color = rgb("#005f73")
 #let light-gray = rgb("#f8f9fa")
 #let border-color = rgb("#cbd5e1")
 
-#let field(label, body) = block(
+#set text(font: "Liberation Sans", size: 9pt, fill: brand-color.darken(20%))
+#set align(top)
+
+#let field(label) = block(
   width: 100%,
   stroke: (bottom: 0.5pt + border-color),
   inset: (bottom: 3pt, top: 2pt),
   [
     #text(size: 7pt, fill: brand-color.darken(20%), weight: "bold", upper(label)) \
-    #v(-2pt)
-    #body
   ]
 )
 #let stdBox(body) = box(
@@ -95,34 +93,34 @@
   stdBox(
     [
     #text(size: 11pt, fill: brand-color.darken(20%), weight: "bold", [Entry]) \
-      #field([Surf Int.], [])
-      #field([Pres. group], [])
-      #field([time in #h(1fr) : #h(1fr)], [])
-      #field([air #h(1fr) bar], [])
+      #field([Surf Int.])
+      #field([Pres. group])
+      #field([time in #h(1fr) : #h(1fr)])
+      #field([air #h(1fr) bar])
     ]
   ),
   stdBox(
     [
     #text(size: 11pt, fill: brand-color.darken(20%), weight: "bold", [Dive]) \
-      #field([Bottom time #h(1fr) mins], [])
-      #field([Avg. depth #h(1fr) m], [])
-      #field([max depth #h(1fr) m], [])
-      #field([safety #h(1fr) mins], [])
+      #field([Bottom time #h(1fr) mins])
+      #field([Avg. depth #h(1fr) m])
+      #field([max depth #h(1fr) m])
+      #field([safety #h(1fr) mins])
     ]
   ),
   stdBox(
     [
     #text(size: 11pt, fill: brand-color.darken(20%), weight: "bold", [Exit]) \
-      #field([NDL #h(1fr) mins], [])
-      #field([Pres. group], [])
-      #field([time out #h(1fr) : #h(1fr)], [])
-      #field([air #h(1fr) bar], [])
+      #field([NDL #h(1fr) mins])
+      #field([Pres. group])
+      #field([time out #h(1fr) : #h(1fr)])
+      #field([air #h(1fr) bar])
     ]
   ),
 )
 
 
-// Core Dive Metrics Grid 
+// Core Dive Metrics
 #grid(
   columns: (1fr, 1fr, 1fr),
   column-gutter: 10pt,
@@ -130,18 +128,32 @@
   
   // Environment & Gear Parameters
   
-  field([Visibility#h(1fr) m], []),
-  
-  field("Gas Mix", [ ]), //#box(square(size: 6pt, stroke: 0.5pt)) Air \  #box(square(size: 6pt, stroke: 0.5pt)) EANx #h(1fr) % ]),
-  field([Weight Added #h(1fr) kg ], []),
-  field("Suit Type", []),
-  
-  field([Air Temp #h(1fr) °C ], []),
-  // field([Water Temp (Surface) #h(1fr) °C ], []),
-  field([Water Temp #h(1fr) °C ], []),
+  field([Visibility#h(1fr) m]),
+  field("Gas Mix"), //#box(square(size: 6pt, stroke: 0.5pt)) Air \  #box(square(size: 6pt, stroke: 0.5pt)) EANx #h(1fr) % ]),
+  field([Weight Added #h(1fr) kg ]),
+
+  field([Tank (+ Mat) #h(1fr) L #h(1fr) #h(1fr)]),
+  field([Air Temp #h(1fr) °C ]),
+  // field([Water Temp (Surface) #h(1fr) °C ]),
+  field([Water Temp #h(1fr) °C ]),
 )
 
-// Dive Profile Notes / Sketch Area 
+// a
+
+#let t(label) = text(size: 8pt, fill: brand-color.darken(20%), weight: "bold", upper(label))
+#set text(weight: "bold")
+#grid(
+  columns: 5,
+  gutter: 3em,
+  t[ Suit ] ,
+  t[ #sym.ballot Wet ( #h(1.5em) mm) ] ,
+  t[ #sym.ballot Dry ],
+  t[ #sym.ballot Gloves ],
+  t[ #sym.ballot Boots ],
+)
+
+
+// Dive Notes
 #text(size: 8pt, weight: "bold", fill: brand-color, upper("Dive Notes"))
 #v(2pt)
 #rect(
@@ -169,9 +181,9 @@
   
   align(left)[
     #v(0.4cm)
-    #field("Buddy / Instructor Name", [])
+    #field("Buddy / Instructor Name")
     #v(0.4cm)
-    #field("Signature / Certification No.", [])
+    #field("Signature / Certification No.")
   ],
   align(right)[
     #rect(
