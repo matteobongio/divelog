@@ -38,14 +38,14 @@
   grid.cell(colspan:2,
     stdBox(
       text(size: 12pt, weight: "bold", fill: brand-color)[
-        LOCATION #h(1fr)
+        SITE #h(1fr)
       ]
     )
   ),
   grid.cell(colspan:2,
     stdBox(
       text(size: 12pt, weight: "bold", fill: brand-color)[
-        COUNTRY#h(1fr)
+        LOCATION#h(1fr)
       ]
     )
   ),
@@ -54,32 +54,38 @@
 #let entryDiveExit = grid(
   columns: (30%, 1fr, 30%), gutter: 3pt,
   stdBox(
-    [
+  [
     #text(size: 11pt, fill: brand-color.darken(20%), weight: "bold", [Entry]) \
+    #field([time in #h(1fr) : #h(1fr)])
+    #field([air #h(1fr) bar])
       #field([Surf Int.])
       #field([Pres. group])
-      #field([time in #h(1fr) : #h(1fr)])
-      #field([air #h(1fr) bar])
-    ]
-  ),
+  ]),
   stdBox(
-    [
+  [
     #text(size: 11pt, fill: brand-color.darken(20%), weight: "bold", [Dive]) \
-      #field([Bottom time #h(1fr) mins])
+      #field([Duration #h(1fr) mins])
       #field([Avg. depth #h(1fr) m])
       #field([max depth #h(1fr) m])
       #field([safety #h(1fr) yes / no ])
-    ]
-  ),
-  stdBox(
+  ]),
+  [
+  #stdBox(
     [
     #text(size: 11pt, fill: brand-color.darken(20%), weight: "bold", [Exit]) \
-      #field([NDL #h(1fr) mins])
-      #field([time out #h(1fr) : #h(1fr)])
-      #field([air #h(1fr) bar])
-      #hide(field([Pres. group]))
-    ]
-  ),
+    #field([time out #h(1fr) : #h(1fr)])
+    #field([air #h(1fr) bar])
+    // #hide(field([NDL #h(1fr) mins]))
+    // #hide(field([Pres. group]))
+    #v(-0.2em)
+  ])
+  #v(-0.9em)
+  #stdBox(
+    [
+    #field([SAC #h(1fr) bar/min])
+    #v(2.3em)
+  ])
+],
 )
 
 
@@ -89,7 +95,7 @@
   row-gutter: 12pt,
 
   field([Visibility#h(1fr) m]),
-  field([O2 %]), //#box(square(size: 6pt, stroke: 0.5pt)) Air \  #box(square(size: 6pt, stroke: 0.5pt)) EANx #h(1fr) % ]),
+  field([O2 #h(1fr) %]), //#box(square(size: 6pt, stroke: 0.5pt)) Air \  #box(square(size: 6pt, stroke: 0.5pt)) EANx #h(1fr) % ]),
   field([Weight #h(1fr) kg ]),
 
   field([Tank #h(2em) L #h(1fr) #sym.circle.big ALU #h(1fr) #sym.circle.big Steel]),
@@ -98,8 +104,9 @@
   // field([Water Temp (Surface) #h(1fr) °C ]),
 )
 
+#let t(label) = text(size: 8pt, fill: brand-color.darken(20%), weight: "bold", upper(label))
+
 #let suit = {
-  let t(label) = text(size: 8pt, fill: brand-color.darken(20%), weight: "bold", upper(label))
   grid(
     columns: 7,
     gutter: 1em,
@@ -116,7 +123,6 @@
 
 #let notes(linedNotes: true) = {
   text(size: 8pt, weight: "bold", fill: brand-color, upper("Notes"))
-  v(2pt)
   rect(
     width: 100%,
     height: 7cm,
@@ -138,24 +144,32 @@
 }
 
 #let buddyStamp = grid(
-  columns: (1.8fr, 1fr),
-  column-gutter: 1pt,
+  columns: (1fr, 3.2cm),
+  column-gutter: 5pt,
   
-  align(left)[
-    #v(0.4cm)
-    #field("Buddy Name")
-    #v(0.4cm)
-    #field("Signature / Certification No.")
-  ],
-  align(right)[
-    #rect(
-      width: 3.5cm,
-      height: 2.2cm,
-      stroke: (paint: brand-color, dash: "dashed", thickness: 1pt),
-      radius: 3pt,
-      // align(center + horizon)[
-      //   #text(size: 7pt, fill: brand-color.lighten(20%), weight: "medium", upper("Buddy / Shop Stamp"))
-      // ]
-    )
+    // #v(0.4cm)
+    // #field("Buddy Name")
+    // #v(0.4cm)
+    // #field("Signature / Certification No.")
+  rect(
+    width: 100%,
+    height: 2.4cm,
+    stroke: 1.5pt + brand-color,
+    radius: 3pt,
+    [
+    #t[Buddy / dive center / signature / certification no.]
   ]
+    // align(center + horizon)[
+    //   #text(size: 7pt, fill: brand-color.lighten(20%), weight: "medium", upper("Buddy / Shop Stamp"))
+    // ]
+  ),
+  rect(
+    width: 100%,
+    height: 2.4cm,
+    stroke: (paint: brand-color, dash: "dashed", thickness: 1pt),
+    radius: 3pt,
+    // align(center + horizon)[
+    //   #text(size: 7pt, fill: brand-color.lighten(20%), weight: "medium", upper("Buddy / Shop Stamp"))
+    // ]
+  )
 )
