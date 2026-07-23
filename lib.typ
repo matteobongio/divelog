@@ -17,7 +17,6 @@
   body
 )
 
-// Header 
 #let header = grid(
   columns: (auto, auto, auto), gutter: 3pt,
   stdBox(
@@ -58,8 +57,8 @@
     #text(size: 11pt, fill: brand-color.darken(20%), weight: "bold", [Entry]) \
     #field([time in #h(1fr) : #h(1fr)])
     #field([air #h(1fr) bar])
-      #field([Surf Int.])
-      #field([Pres. group])
+    #field([Surf Int.])
+    #field([Pres. group])
   ]),
   stdBox(
   [
@@ -75,8 +74,8 @@
     #text(size: 11pt, fill: brand-color.darken(20%), weight: "bold", [Exit]) \
     #field([time out #h(1fr) : #h(1fr)])
     #field([air #h(1fr) bar])
-    // #hide(field([NDL #h(1fr) mins]))
-    // #hide(field([Pres. group]))
+    // #field([NDL #h(1fr) mins])
+    // #field([Pres. group])
     #v(-0.2em)
   ])
   #v(-0.9em)
@@ -95,7 +94,7 @@
   row-gutter: 12pt,
 
   field([Visibility#h(1fr) m]),
-  field([O2 #h(1fr) %]), //#box(square(size: 6pt, stroke: 0.5pt)) Air \  #box(square(size: 6pt, stroke: 0.5pt)) EANx #h(1fr) % ]),
+  field([O2 #h(1fr) %]),
   field([Weight #h(1fr) kg ]),
 
   field([Tank #h(2em) L #h(1fr) #sym.circle.big ALU #h(1fr) #sym.circle.big Steel]),
@@ -159,9 +158,6 @@
     [
     #t[Buddy / dive center / signature / certification no.]
   ]
-    // align(center + horizon)[
-    //   #text(size: 7pt, fill: brand-color.lighten(20%), weight: "medium", upper("Buddy / Shop Stamp"))
-    // ]
   ),
   rect(
     width: 100%,
